@@ -1,7 +1,7 @@
 package main
 
 import (
-	"DataStructTest/model/list"
+	"DataStructTest/model/data_struct/list"
 	"fmt"
 )
 

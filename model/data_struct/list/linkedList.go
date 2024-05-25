@@ -17,28 +17,23 @@ type LinkedList struct {
 }
 
 func (l *LinkedList) Insert(value any) {
-	currentNode := l.head
-
-	if currentNode == nil {
-		currentNode = &LinkedListNode{value, nil}
-		l.head = currentNode
+	newNode := &LinkedListNode{Value: value}
+	if l.head == nil {
+		l.head = newNode
 	} else {
+		currentNode := l.head
 		for currentNode.Next != nil {
 			currentNode = currentNode.Next
 		}
-		currentNode.Next = &LinkedListNode{value, nil}
+		currentNode.Next = newNode
 	}
 }
 
-func (l *LinkedList) Delete() {
-	l.head = nil
-}
-
 func (l *LinkedList) Contains(value any) bool {
-	currentNode := l.head
-	if currentNode == nil {
+	if l.head == nil {
 		return false
 	} else {
+		currentNode := l.head
 		if currentNode.Value == value {
 			return true
 		} else {
@@ -54,10 +49,10 @@ func (l *LinkedList) Contains(value any) bool {
 }
 
 func (l *LinkedList) Remove(value any) {
-	currentNode := l.head
-	if currentNode == nil {
+	if l.head == nil {
 		return
 	} else {
+		currentNode := l.head
 		if currentNode.Value == value {
 			l.head = currentNode.Next
 		} else {
@@ -74,11 +69,11 @@ func (l *LinkedList) Remove(value any) {
 }
 
 func (l *LinkedList) RemoveAt(index int) {
-	currentCount := 0
-	currentNode := l.head
-	if currentNode == nil {
+	if l.head == nil {
 		return
 	} else {
+		currentCount := 0
+		currentNode := l.head
 		if currentCount == index {
 			l.head = currentNode.Next
 		} else {
@@ -96,11 +91,11 @@ func (l *LinkedList) RemoveAt(index int) {
 }
 
 func (l *LinkedList) Get(index int) any {
-	currentCount := 0
-	currentNode := l.head
-	if currentNode == nil {
+	if l.head == nil {
 		return nil
 	} else {
+		currentCount := 0
+		currentNode := l.head
 		if currentCount == index {
 			return currentNode.Value
 		} else {
